@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Computer Science & Engineering - K.S. Rangasamy College of Engineering</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        .hero {
+            background-image: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        section {
+            padding: 4rem 0;
+        }
+        section:nth-child(even) {
+            background-color: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        .faculty-card {
+            text-align: center;
+        }
+        .faculty-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid var(--secondary-color);
+        }
+        .faculty-card h4 {
+            margin: 0.5rem 0;
+        }
+        .faculty-card .designation {
+            color: #555;
+            font-style: italic;
+        }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        :root{
+                --primary-color: #2c3e50;
+                --secondary-color: #3498db;
+                --background-color: #f4f6f8;
+                --text-color: #333;
+                --card-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            	--chat--color-primary: #170959;
+                --chat--color-primary-shade-50: #006a76;
+                --chat--color-primary-shade-100: #0088ff;
+                --chat--color-secondary: #20b69e;
+                --chat--color-secondary-shade-50: #1ca08a;
+                --chat--color-white: #ffffff;
+                --chat--color-light: #f2f4f8;
+                --chat--color-light-shade-50: #e6e9f1;
+                --chat--color-light-shade-100: #c2c5cc;
+                --chat--color-medium: #d2d4d9;
+                --chat--color-dark: #101330;
+                --chat--color-disabled: #777980;
+                --chat--color-typing: #404040;
+
+                --chat--spacing: 1rem;
+                --chat--border-radius: 0.25rem;
+                --chat--transition-duration: 0.15s;
+
+                --chat--window--width: 400px;
+                --chat--window--height: 600px;
+
+                --chat--header-height: auto;
+                --chat--header--padding: var(--chat--spacing);
+                --chat--header--background: var(--chat--color-dark);
+                --chat--header--color: var(--chat--color-light);
+                --chat--header--border-top: none;
+                --chat--header--border-bottom: none;
+                --chat--header--border-bottom: none;
+                --chat--header--border-bottom: none;
+                --chat--heading--font-size: 2em;
+                --chat--header--color: var(--chat--color-light);
+                --chat--subtitle--font-size: inherit;
+                --chat--subtitle--line-height: 1.8;
+
+                --chat--textarea--height: 50px;
+
+                --chat--message--font-size: 1rem;
+                --chat--message--padding: var(--chat--spacing);
+                --chat--message--border-radius: var(--chat--border-radius);
+                --chat--message-line-height: 1.8;
+                --chat--message--bot--background: var(--chat--color-white);
+                --chat--message--bot--color: var(--chat--color-dark);
+                --chat--message--bot--border: none;
+                --chat--message--user--background: var(--chat--color-secondary);
+                --chat--message--user--color: var(--chat--color-white);
+                --chat--message--user--border: none;
+                --chat--message--pre--background: rgba(0, 0, 0, 0.05);
+
+                --chat--toggle--background: var(--chat--color-primary);
+                --chat--toggle--hover--background: var(--chat--color-primary-shade-50);
+                --chat--toggle--active--background: var(--chat--color-primary-shade-100);
+                --chat--toggle--color: var(--chat--color-white);
+                --chat--toggle--size: 64px;
+            }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">KSRCE CSE Dept.</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#faculty">Faculty</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>Innovating the Future, One Line of Code at a Time</h1>
+            <p>Welcome to the Department of Computer Science and Engineering at K.S. Rangasamy College of Engineering. We are dedicated to fostering the next generation of tech leaders, problem solvers, and innovators.</p>
+            <a href="#academics" class="btn">Explore Our Programs</a>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Our Department</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Our Vision</h3>
+                            <p>To be a globally recognized center of excellence in computer science education and research, producing professionals who can drive innovation and solve real-world challenges.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Our Mission</h3>
+                            <p>To provide a robust curriculum that blends theoretical foundations with practical application, to foster a vibrant research environment, and to equip students with the ethical and professional skills needed for a successful career.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>State-of-the-Art Labs</h3>
+                            <p>Gain hands-on experience in our specialized labs: AI & Machine Learning, Cybersecurity, Data Science, IoT & Embedded Systems, and a High-Performance Computing Center.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="academics">
+            <div class="container">
+                <h2 class="section-title">Academic Programs</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>B.E in CSE</h3>
+                            <p>Our 4-year undergraduate program provides a strong foundation in computer science with options to specialize in AI & ML, Cybersecurity, and Data Science. The curriculum is designed to produce industry-ready graduates.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>M.E in CSE</h3>
+                            <p>A 2-year postgraduate program focused on advanced topics and research. Students engage in cutting-edge projects under the guidance of expert faculty, preparing them for specialized roles and further studies.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Ph.D. Program</h3>
+                            <p>Our doctoral program is for aspiring researchers who wish to contribute to the body of knowledge in computer science. We offer a supportive environment for high-impact research.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faculty">
+            <div class="container">
+                <h2 class="section-title">Our Faculty</h2>
+                <div class="grid">
+                    <div class="card faculty-card">
+                        <img src="https://ksrce.ac.in/admin/file_manager/source/be-cse/faculty/Dr.P.KUMAR.png" alt="Dr. P. Kumar">
+                        <div class="card-content">
+                            <h4>Dr. P. Kumar</h4>
+                            <p class="designation">Professor & Head</p>
+                            <p><strong>Specialization:</strong> Data Mining</p>
+                        </div>
+                    </div>
+                    <div class="card faculty-card">
+                        <img src="https://ksrce.ac.in/admin/file_manager/source/be-cse/faculty/Dr.S.SHARMILA.png" alt="Dr. S. Sharmila">
+                        <div class="card-content">
+                            <h4>Dr. S. Sharmila</h4>
+                            <p class="designation">Professor</p>
+                            <p><strong>Specialization:</strong> Cloud Computing</p>
+                        </div>
+                    </div>
+                    <div class="card faculty-card">
+                        <img src="https://ksrce.ac.in/admin/file_manager/source/be-cse/faculty/Dr.R.SASIKALA.png" alt="Dr. R. Sasikala">
+                        <div class="card-content">
+                            <h4>Dr. R. Sasikala</h4>
+                            <p class="designation">Professor</p>
+                            <p><strong>Specialization:</strong> Computer Networks</p>
+                        </div>
+                    </div>
+                     <div class="card faculty-card">
+                        <img src="https://ksrce.ac.in/admin/file_manager/source/be-cse/faculty/Dr.S.MALATHI.png" alt="Dr. S. Malathi">
+                        <div class="card-content">
+                            <h4>Dr. S. Malathi</h4>
+                            <p class="designation">Associate Professor</p>
+                            <p><strong>Specialization:</strong> Data Mining</p>
+                        </div>
+                    </div>
+                    <div class="card faculty-card">
+                        <img src="https://ksrce.ac.in/admin/file_manager/source/be-cse/faculty/Dr.S.SUNDARARAJAN.png" alt="Dr. S. Sundararajan">
+                        <div class="card-content">
+                            <h4>Dr. S. Sundararajan</h4>
+                            <p class="designation">Associate Professor</p>
+                            <p><strong>Specialization:</strong> Digital Image Processing</p>
+                        </div>
+                    </div>
+                    <div class="card faculty-card">
+                        <img src="https://ksrce.ac.in/admin/file_manager/source/be-cse/faculty/Dr.N.S.MUTHUKUMARAN.png" alt="Dr. N. S. Muthukumaran">
+                        <div class="card-content">
+                            <h4>Dr. N. S. Muthukumaran</h4>
+                            <p class="designation">Associate Professor</p>
+                            <p><strong>Specialization:</strong> Grid and Cloud Computing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <div class="container">
+                <h2 class="section-title">Research & Innovation</h2>
+                <p style="text-align:center; max-width:800px; margin:-2rem auto 3rem auto;">Our department is a hub of research and development. We actively pursue projects in several cutting-edge areas, contributing to both academia and industry.</p>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Core Research Areas</h3>
+                            <p>Algorithms & Complexity, Computer Networks & Security, Artificial Intelligence & Robotics, Software Engineering, and more.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Funded Projects</h3>
+                            <p>We have numerous ongoing projects funded by national agencies and industry partners, focusing on solving real-world problems.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Publications</h3>
+                            <p>Our faculty and students regularly publish in top-tier international journals and conferences, contributing to the global scientific community.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="container" style="text-align:center;">
+                <h2 class="section-title">Contact Us</h2>
+                <p>We would love to hear from you. Reach out with your queries.</p>
+                <p><strong>Address:</strong> Department of CSE, K.S. Rangasamy College of Engineering, KSR Kalvi Nagar, Tiruchengode, Tamil Nadu, 637215</p>
+                <p><strong>Email:</strong> hodcse@ksrce.ac.in</p>
+                <p><strong>Phone:</strong> +91-4288-274741</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Department of Computer Science & Engineering, K.S. Rangasamy College of Engineering. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+	webhookUrl: 'https://ak35.app.n8n.cloud/webhook/2a421af6-ac4c-45e5-8193-9193e31838e0/chat',
+	webhookConfig: {
+		method: 'POST',
+		headers: {}
+	},
+	target: '#n8n-chat',
+	mode: 'window',
+	chatInputKey: 'chatInput',
+	chatSessionKey: 'sessionId',
+	loadPreviousSession: true,
+	metadata: {},
+	showWelcomeScreen: false,
+	defaultLanguage: 'en',
+	initialMessages: [
+		'Hi there! 👋',
+		'My name is Study Bot. How can I assist you today?'
+	],
+	i18n: {
+		en: {
+			title: 'Welcome To CSE 👋',
+			subtitle: "Ask Anything About the Department of Computer Science & Engineering.",
+			footer: 'Thank You',
+			getStarted: 'New Conversation',
+			inputPlaceholder: 'Type your question..',
+		},
+	},
+	enableStreaming: false,
+});
+    </script>
+</body>
+</html>
